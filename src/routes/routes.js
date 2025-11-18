@@ -1,7 +1,7 @@
 export const Routes ={
     Root: "/",
+    Chat: "/chat",
     Auth: "/auth",
     Login: "/auth/login",
-    Register: "/auth/Register",
     Unknow: "*"
 }

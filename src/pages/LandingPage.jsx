@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Code2, Users, Brain } from "lucide-react";
-import { useNavigate } from "react-router";
+import { Route, useNavigate } from "react-router";
 import { Routes } from "../routes/routes";
 import FeatureCard from "../components/FeatureCard";
 
@@ -29,7 +29,7 @@ export default function LandingPage() {
           </p>
 
           <div className="mt-10 flex items-center justify-center gap-4">
-            <Button size="lg" className="bg-blue-500 hover:bg-blue-600">
+            <Button size="lg" className="bg-blue-500 hover:bg-blue-600" onClick={() => navigate(Routes.Login)}>
               Começar agora
             </Button>
             <Button size="lg" variant="outline" className="border-blue-300 text-blue-100 hover:bg-white/10">
