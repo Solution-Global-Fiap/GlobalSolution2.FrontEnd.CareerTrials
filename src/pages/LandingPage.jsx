@@ -3,7 +3,7 @@ import { Code2, Users, Brain } from "lucide-react";
 import { useNavigate } from "react-router";
 import { Routes } from "../routes/routes";
 import FeatureCard from "../components/FeatureCard";
-import GlobalThemeToggle from "../components/GlobalThemeToggle";
+import GlobalThemeToggle from "@/components/GlobalThemeToggle";
 
 export default function LandingPage() {
   const navigate = useNavigate();

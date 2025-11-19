@@ -12,7 +12,7 @@ export default function MessageBubble({ message, index }) {
         >
             <Avatar className="h-12 w-12 shrink-0">
                 <AvatarFallback
-                    className={isUser ? "bg-primary text-primary-foreground" : "bg-muted text-foreground"}
+                    className={isUser ? "bg-primary text-(--text-inverted)" : "bg-muted text-foreground"}
                 >
                     {isUser ? <User /> : <Bot />}
                 </AvatarFallback>
@@ -24,7 +24,7 @@ export default function MessageBubble({ message, index }) {
                         ${isUser ? "bg-primary text-primary-foreground ml-auto" : "bg-accent text-accent-foreground"}
                     `}
                 >
-                    <p className="text-md font-semibold whitespace-pre-wrap leading-relaxed">
+                    <p className={`text-md font-semibold whitespace-pre-wrap leading-relaxed ${isUser ? "text-(--text-inverted)" : "text-text"}`}>
                         {message.content}
                     </p>
                 </Card>

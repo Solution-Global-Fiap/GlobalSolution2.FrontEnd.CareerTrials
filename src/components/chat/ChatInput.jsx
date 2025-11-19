@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Send } from "lucide-react";
@@ -7,12 +7,19 @@ export default function ChatInput({ onSend, disabled }) {
     const [value, setValue] = useState("");
     const inputRef = useRef(null);
 
+    useEffect(() => {
+        if (!disabled && inputRef.current) {
+            requestAnimationFrame(() => {
+                inputRef.current?.focus();
+            });
+        }
+    }, [disabled, value])
+
     const send = () => {
         const text = value.trim();
         if (!text) return;
-        setValue("");
         onSend(text);
-        inputRef.current?.focus();
+        setValue("");
     };
 
     const handleKeyPress = (e) => {

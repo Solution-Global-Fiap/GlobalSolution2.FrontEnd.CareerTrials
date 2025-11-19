@@ -27,9 +27,9 @@ const router = createBrowserRouter([
         children: [
           {
             path: Routes.Challenges,
-            Component: ChallengesPage
+            Component: ChallengesPage,
           },
-            {
+          {
             path: Routes.Comunity,
             Component: ComunityPage
           },

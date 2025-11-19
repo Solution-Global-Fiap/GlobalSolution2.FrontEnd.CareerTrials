@@ -81,12 +81,8 @@
   --border: #1f2937;
   --shadow: rgba(0, 0, 0, 0.6);
 
-  --primary: #3b82f6;
+  --primary: #0a1f4e;
   --primary-hover: #2563eb;
-
-  --hero-from: #0a1f4e;
-  --hero-middle: #083472;
-  --hero-to: #0a1f4e;
 }
 
 .dark {
