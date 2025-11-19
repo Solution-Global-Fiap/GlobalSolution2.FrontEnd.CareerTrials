@@ -14,12 +14,12 @@ export default function LandingPage() {
       <div className="w-full min-h-screen bg-(--bg) text-(--text)">
         <section
           className="min-h-[90vh] flex items-center 
-        bg-linear-to-r 
-        from-(--hero-from)
-        via-(--hero-middle)
-        to-(--hero-to)
-        text-(--text-inverted)
-        py-20"
+            bg-linear-to-r 
+            from-(--hero-from)
+            via-(--hero-middle)
+            to-(--hero-to)
+            text-(--text-inverted)
+            py-20"
         >
           <div className="max-w-6xl mx-auto text-center px-6">
             <span className="bg-white/10 text-blue-200 border border-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm">

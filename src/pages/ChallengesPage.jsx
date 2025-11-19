@@ -17,7 +17,7 @@ const analysisSteps = [
 ];
 
 export default function ChallengesPage() {
-  const [currentStep, setCurrentStep] = useState(STEPS.CHAT);
+  const [currentStep, setCurrentStep] = useState(STEPS.ANALYSIS);
   const [careerData, setCareerData] = useState(null);
   const [analysisProgress, setAnalysisProgress] = useState(0);
   const [currentAnalysisStep, setCurrentAnalysisStep] = useState(0);
@@ -77,12 +77,24 @@ export default function ChallengesPage() {
   }
 
   if (currentStep === STEPS.ANALYSIS) {
-    return <AnalysisCard
-      careerGoal={careerData?.careerGoal}
-      currentStep={currentAnalysisStep}
-      progress={analysisProgress}
-      steps={analysisSteps}
-    />;
+    return (
+      <div className="h-full w-full flex items-center justify-center p-4">
+        <div
+          className="w-full max-w-3xl"
+          style={{
+            transform: 'scale(0.85)',
+            transformOrigin: 'center center'
+          }}
+        >
+          <AnalysisCard
+            careerGoal={careerData?.careerGoal}
+            currentStep={currentAnalysisStep}
+            progress={analysisProgress}
+            steps={analysisSteps}
+          />
+        </div>
+      </div>
+    );
   }
 
   return (
