@@ -1,3 +1,4 @@
+import { ThemeProvider } from './components/ThemeProvider';
 import AppRoutes from './routes/AppRoute'
 import { Toaster } from "react-hot-toast";
 
@@ -5,8 +6,10 @@ function App() {
 
   return (
     <>
-      <Toaster position="top-center" reverseOrder={false} />
-      <AppRoutes />
+      <ThemeProvider>
+        <AppRoutes />
+        <Toaster position="top-center" reverseOrder={false} />
+      </ThemeProvider>
     </>
   )
 }
