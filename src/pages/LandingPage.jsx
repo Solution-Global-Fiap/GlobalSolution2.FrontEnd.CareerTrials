@@ -40,7 +40,7 @@ export default function LandingPage() {
             <div className="mt-10 flex items-center justify-center gap-4">
               <Button
                 size="lg"
-                className="bg-(--primary) hover:bg-(--primary-hover)"
+                className="bg-(--bg) hover:bg-(--primary-hover) text-(--text-inverted)"
                 onClick={() => navigate(Routes.Login)}
               >
                 Começar agora
@@ -48,8 +48,7 @@ export default function LandingPage() {
 
               <Button
                 size="lg"
-                variant="outline"
-                className="border-blue-300 text-blue-100 hover:bg-white/10"
+                className="bg-(--bg) hover:bg-(--primary-hover) text-(--text-inverted)"
               >
                 Saiba mais
               </Button>
@@ -116,7 +115,7 @@ export default function LandingPage() {
                 variant="secondary"
                 size="lg"
                 onClick={() => navigate(Routes.Register)}
-                className="text-lg hover:scale-105 transition-transform text-white"
+                className="text-lg hover:scale-105 transition-transform text-(--text-inverted)"
               >
                 Começar Agora
               </Button>
