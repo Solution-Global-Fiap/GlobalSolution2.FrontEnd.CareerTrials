@@ -6,6 +6,9 @@ import LoginPage from "../pages/LoginPage.jsx";
 import ChatPage from "../pages/ChatPage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 
+const relativeTo = (childPath, parentPath) => {
+  return childPath.replace(parentPath + "/", "");
+}
 
 const router = createBrowserRouter([
   {
@@ -30,7 +33,7 @@ const router = createBrowserRouter([
         element: <Navigate to={Routes.Login} replace />,
       },
       {
-        path: Routes.Login.replace(Routes.Auth + "/", ""),
+        path: relativeTo(Routes.Login, Routes.Auth),
         Component: LoginPage,
       }
     ],
