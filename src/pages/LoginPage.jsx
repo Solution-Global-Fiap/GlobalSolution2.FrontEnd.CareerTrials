@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { loginUser, getAuthenticated } from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Routes } from "../routes/routes";
-import ModeToggle from "@/components/ModeToggle";
+import GlobalThemeToggle from "@/components/GlobalThemeToggle";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ export default function LoginPage() {
 
   return (
     <div>
-      <ModeToggle />
+      <GlobalThemeToggle />
       <div className="min-h-screen flex items-center justify-center bg-(--bg) text-(--text) p-4">
         <Card className="w-full max-w-md bg-(--bg-card) border border-border shadow-[0_0_20px_var(--shadow)]">
           <CardHeader>

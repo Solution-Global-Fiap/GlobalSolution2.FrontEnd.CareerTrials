@@ -26,21 +26,16 @@ import users from "../data/users";
 
 export default function ProfilePage() {
   const { id } = useParams();
-  const [user, setUser] = useState(null);
+  const [user] = useState(() => {
+    const selectedUser = users.find((u) => u.id === Number(id));
+    if (!selectedUser) {
+      console.warn("Usuário não encontrado para o ID:", id);
+    }
+    return selectedUser || null;
+  });
 
   const [userXP] = useState(450);
   const [userLevel] = useState(3);
-
-  useEffect(() => {
-    const selectedUser = users.find((u) => u.id === Number(id));
-
-    if (selectedUser) {
-      setUser(selectedUser);
-    } 
-    else {
-      console.warn("Usuário não encontrado para o ID:", id);
-    }
-  }, [id]);
 
   if (!user) return <p className="text-center mt-20">Carregando perfil...</p>;
 
