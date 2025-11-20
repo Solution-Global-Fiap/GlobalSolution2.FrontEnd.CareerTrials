@@ -119,7 +119,7 @@ export default function ChallengesPage() {
     return (
       <div
         className="min-h-screen my-20"
-        style={{ background: "var(--bg)", color: "var(--text)" }}
+        style={{color: "var(--text)" }}
       >
         <div className="max-w-4xl mx-auto px-4 py-10">
           <div className="text-center mb-10">
@@ -137,11 +137,11 @@ export default function ChallengesPage() {
             }}
           >
             <div
-              className="absolute left-1/2 top-0 bottom-0 w-[3px] z-0"
+              className="absolute left-1/2 -translate-x-px top-10 bottom-45 w-[3px] z-0"
               style={{ background: "var(--border)" }}
             />
 
-            <div className="flex flex-col items-center mb-20 z-10">
+            <div className="flex flex-col items-center mb-20 z-10 sticky">
               <div className="h-14 w-14 flex items-center justify-center rounded-full bg-primary">
                 <Rocket className="h-6 w-6" />
               </div>
@@ -153,7 +153,7 @@ export default function ChallengesPage() {
 
             {levels.map((level) => (
               <div key={level}>
-                <div className="flex justify-center my-10">
+                <div className="flex justify-center my-10 sticky">
                   <Badge
                     style={{
                       background: "var(--primary)",
