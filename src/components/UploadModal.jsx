@@ -118,10 +118,20 @@ export default function UploadModal({ challenge, onClose }) {
               className={`border-2 border-dashed rounded-xl p-10 text-center transition
               ${dragging ? "bg-primary/10 border-primary" : "border-border"}
             `}
-              onDragOver={(e) => e.preventDefault()}
-              onDragEnter={() => setDragging(true)}
-              onDragLeave={() => setDragging(false)}
-              onDrop={handleDrop}
+              onDragOver={(e) => {
+                e.preventDefault();
+                if (!dragging) setDragging(true);
+              }}
+              onDragLeave={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget)) {
+                  setDragging(false);
+                }
+              }}
+              onDrop={(e) => {
+                e.preventDefault();
+                setDragging(false);
+                handleDrop(e);
+              }}
             >
               {!file ? (
                 <p className="text-sm">
