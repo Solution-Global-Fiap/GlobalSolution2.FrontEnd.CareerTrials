@@ -102,7 +102,11 @@ export default function UploadModal({ challenge, onClose }) {
               </div>
             )}
 
-            <Button className="mt-6 bg-primary text-white" onClick={onClose}>
+            <Button 
+              onClick={onClose}
+              className="w-full text-white font-semibold rounded-xl py-3"
+              style={{ background: "var(--primary)" }}
+            >
               Fechar
             </Button>
           </div>
@@ -132,7 +136,8 @@ export default function UploadModal({ challenge, onClose }) {
               <Button
                 disabled={!file}
                 onClick={handleSendToAI}
-                className="bg-primary text-white"
+                className="w-full text-white font-semibold rounded-xl py-3"
+                style={{ background: "var(--primary)" }}
               >
                 Enviar
               </Button>

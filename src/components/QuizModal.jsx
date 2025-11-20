@@ -32,7 +32,10 @@ export default function QuizModal({ challenge, onClose }) {
 
   return (
     <Dialog open={true} onOpenChange={onClose}>
-      <DialogContent className="max-w-lg bg-background text-foreground border-border border">
+      <DialogContent 
+        className="max-w-lg text-foreground border-border border"
+        overlayClassName="dialog-overlay"
+      >
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold">
             {challenge.title}
@@ -76,7 +79,11 @@ export default function QuizModal({ challenge, onClose }) {
               {Math.round((score / questions.length) * 100)}%
             </div>
 
-            <Button onClick={onClose} className="w-full text-white" style="">
+            <Button 
+              onClick={onClose}
+              className="w-full text-white font-semibold rounded-xl py-3"
+              style={{ background: "var(--primary)" }}
+            >
               Fechar
             </Button>
           </div>
@@ -92,10 +99,11 @@ export default function QuizModal({ challenge, onClose }) {
                   key={c}
                   onClick={() => setSelected(c)}
                   className={`
-                    p-3 rounded-lg text-left border transition-all
-                    border-border bg-secondary hover:bg-primary/20
-                    ${selected === c ? "bg-primary text-white" : "text-white"}
+                    w-full text-left text-white font-semibold rounded-xl py-3
                   `}
+                  style={{ 
+                    background: selected === c ? "var(--primary)" : "var(--muted)",
+                  }}
                 >
                   {c}
                 </button>
@@ -105,7 +113,8 @@ export default function QuizModal({ challenge, onClose }) {
             <Button
               onClick={handleNext}
               disabled={!selected}
-              className="w-full text-white"
+              className="w-full text-white font-semibold rounded-xl py-3"
+              style={{ background: "var(--primary)" }}
             >
               {current + 1 === questions.length ? "Finalizar" : "Próxima"}
             </Button>

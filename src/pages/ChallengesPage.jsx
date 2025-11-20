@@ -137,12 +137,12 @@ export default function ChallengesPage() {
             }}
           >
             <div
-              className="absolute left-1/2 -translate-x-px top-10 bottom-45 w-[3px] z-0"
+              className="absolute left-1/2 -translate-x-0.5 top-10 bottom-45 w-[3px] z-0"
               style={{ background: "var(--border)" }}
             />
 
             <div className="flex flex-col items-center mb-20 z-10 sticky">
-              <div className="h-14 w-14 flex items-center justify-center rounded-full bg-primary">
+              <div className="h-14 w-14 flex items-center justify-center rounded-full bg-primary text-(--text-inverted)">
                 <Rocket className="h-6 w-6" />
               </div>
               <p className="mt-2 font-semibold">Start Here</p>
@@ -157,7 +157,7 @@ export default function ChallengesPage() {
                   <Badge
                     style={{
                       background: "var(--primary)",
-                      color: "var(--on-primary)",
+                      color: "var(--text-inverted)",
                       padding: "6px 14px",
                       borderRadius: "8px",
                     }}
@@ -172,21 +172,6 @@ export default function ChallengesPage() {
                     <div key={challenge.id} className="relative z-10">
                       <TimelineNode />
 
-                      {selectedChallenge?.type === "Quiz" && (
-                        <QuizModal
-                          challenge={selectedChallenge}
-                          onClose={() => setSelectedChallenge(null)}
-                        />
-                      )}
-
-                      {(selectedChallenge?.type === "Código" ||
-                        selectedChallenge?.type === "Projeto") && (
-                        <UploadModal
-                          challenge={selectedChallenge}
-                          onClose={() => setSelectedChallenge(null)}
-                        />
-                      )}
-
                       <ChallengeCard
                         challenge={challenge}
                         align={index % 2 === 0 ? "right" : "left"}
@@ -198,6 +183,19 @@ export default function ChallengesPage() {
             ))}
           </div>
         </div>
+        {selectedChallenge?.type === "Quiz" && (
+          <QuizModal
+            challenge={selectedChallenge}
+            onClose={() => setSelectedChallenge(null)}
+          />
+        )}
+
+        {["Código", "Projeto"].includes(selectedChallenge?.type) && (
+          <UploadModal
+            challenge={selectedChallenge}
+            onClose={() => setSelectedChallenge(null)}
+          />
+        )}
       </div>
     );
   }
