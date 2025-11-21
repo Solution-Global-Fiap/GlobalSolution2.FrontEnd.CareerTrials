@@ -1,5 +1,5 @@
 const getUsers = [
-   {
+  {
     id: 1,
     nome: "Wesley Oliveira",
     email: "wesley.oliveira@example.com",

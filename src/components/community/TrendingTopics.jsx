@@ -12,11 +12,11 @@ export default function TrendingTopics({ posts }) {
 
     const topTags = Object.entries(tagCounts)
         .sort(([, a], [, b]) => b - a)
-        .slice(0, 5);
+        .slice(0, 3);
 
     if (topTags.length === 0) {
         return (
-            <Card className="p-6 space-y-4">
+            <Card className="p-6">
                 <div className="flex items-center gap-2">
                     <TrendingUp className="h-5 w-5 text-secondary" />
                     <h3 className="font-semibold">Tópicos em Alta</h3>
@@ -29,7 +29,7 @@ export default function TrendingTopics({ posts }) {
     }
 
     return (
-        <Card className="p-6 space-y-4">
+        <Card className="p-6">
             <div className="flex items-center gap-2">
                 <TrendingUp className="h-5 w-5 text-primary" />
                 <h3 className="font-semibold">Tópicos em Alta</h3>

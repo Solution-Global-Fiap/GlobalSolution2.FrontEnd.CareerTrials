@@ -4,7 +4,7 @@ import { Trophy } from "lucide-react";
 export default function Leaderboard({ users }) {
     const topUsers = [...users]
         .sort((a, b) => b.xp - a.xp)
-        .slice(0, 5)
+        .slice(0, 3)
         .map((user, index) => ({
             rank: index + 1,
             name: user.nome,
@@ -14,7 +14,7 @@ export default function Leaderboard({ users }) {
         }));
 
     return (
-        <Card className="p-6 space-y-4">
+        <Card className="p-6">
             <div className="flex items-center gap-2">
                 <Trophy className="h-5 w-5 text-primary" />
                 <h3 className="font-semibold">Ranking</h3>

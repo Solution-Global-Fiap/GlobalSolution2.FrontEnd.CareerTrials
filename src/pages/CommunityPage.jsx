@@ -115,10 +115,6 @@ export default function CommunityPage() {
                             Conecte-se com outros aprendizes, compartilhe progresso e cresça junto
                         </p>
                     </div>
-                    <Button onClick={() => setIsDialogPostOpen(true)}>
-                        <MessageSquare className="h-4 w-4 mr-2" />
-                        Nova Publicação
-                    </Button>
                 </div>
 
                 <CommunityStats 
@@ -138,7 +134,14 @@ export default function CommunityPage() {
                     onOpenCommentDialog={handleOpenCommentDialog}
                 />
 
-                <div className="space-y-6">
+                <div className="space-y-6 lg:block sticky top-24 self-start">
+                    <Button
+                        className="w-full"
+                        onClick={() => setIsDialogPostOpen(true)}
+                    >
+                        <MessageSquare className="h-4 w-4 mr-2" />
+                        Nova Publicação
+                    </Button>
                     <Leaderboard users={users} />
                     <TrendingTopics posts={posts} />
                     <CommunityGuidelines />
@@ -155,6 +158,17 @@ export default function CommunityPage() {
                 onSubmit={handleAddComment}
                 postId={selectedPostId}
             />
+            <Button
+                className="
+                    lg:hidden
+                    fixed bottom-6 right-6
+                    rounded-full h-14 w-14 p-0
+                    shadow-lg
+                "
+                onClick={() => setIsDialogPostOpen(true)}
+            >
+                <MessageSquare className="h-6 w-6" />
+            </Button>
         </div>
     );
 }
