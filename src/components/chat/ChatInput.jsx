@@ -35,7 +35,7 @@ export default function ChatInput({ onSend, disabled }) {
                 <Input
                     ref={inputRef}
                     value={value}
-                    placeholder="Type your message..."
+                    placeholder="Digite sua mensagem"
                     onChange={(e) => setValue(e.target.value)}
                     onKeyDown={handleKeyPress}
                     disabled={disabled}
