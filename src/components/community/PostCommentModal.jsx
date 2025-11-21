@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import getUsers from "@/data/users";
-import CommunityAvatar from "../CommunityAvatar";
+import CommunityAvatar from "./CommunityAvatar";
 
 function formatTimestamp(timestamp) {
     const date = new Date(timestamp);

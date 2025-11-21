@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Activity } from "react";
 
 export default function CommunityAvatar({ user, navigateTo, hide = false, avatarSize = 12 }) {

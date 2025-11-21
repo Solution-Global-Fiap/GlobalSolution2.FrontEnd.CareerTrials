@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { Routes } from "@/routes/routes";
-import CommunityAvatar from "../CommunityAvatar";
+import CommunityAvatar from "./CommunityAvatar";
 
 export default function MentorCard({ mentor }) {
     const navigate = useNavigate()

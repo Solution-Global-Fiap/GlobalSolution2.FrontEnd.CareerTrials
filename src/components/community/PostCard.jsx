@@ -7,7 +7,7 @@ import { useState } from "react";
 import PostCommentsModal from "./PostCommentModal";
 import { useNavigate } from "react-router";
 import { Routes } from "@/routes/routes";
-import CommunityAvatar from "../CommunityAvatar";
+import CommunityAvatar from "./CommunityAvatar";
 
 function formatTimestamp(timestamp) {
     const date = new Date(timestamp);
