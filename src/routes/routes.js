@@ -1,7 +1,7 @@
 export const Routes ={
     Root: "/",
     Challenges: "/challenges",
-    Comunity: "/comunity",
+    Comunity: "/community",
     Profile: "/profile/:id",
     Auth: "/auth",
     Login: "/auth/login",

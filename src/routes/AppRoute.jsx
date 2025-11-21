@@ -6,7 +6,7 @@ import LoginPage from "../pages/LoginPage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import MainLayout from "../pages/layouts/MainLayout.jsx";
 import ChallengesPage from "../pages/ChallengesPage.jsx";
-import ComunityPage from "../pages/ComunityPage.jsx";
+import CommunityPage from "../pages/CommunityPage.jsx";
 import ProfilePage from "../pages/ProfilePage.jsx";
 
 const relativeTo = (childPath, parentPath) => {
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
           },
           {
             path: Routes.Comunity,
-            Component: ComunityPage
+            Component: CommunityPage
           },
           {
             path: Routes.Profile,
