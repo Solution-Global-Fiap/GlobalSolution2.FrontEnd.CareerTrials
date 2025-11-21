@@ -50,6 +50,7 @@
   --bg-inverted: #0b0f19;
   --bg-section: #ffffff;
   --bg-card: #ffffff;
+  --bg-card-completed: #E0E1E2;
 
   --text: #111111;
   --text-secondary: #4b5563;
@@ -105,6 +106,7 @@
   --bg-inverted: #f5f7fa;
   --bg-section: #101622;
   --bg-card: #161d2b;
+  --bg-card-completed: #2D323D;
 
   --text: #e2e8f0;
   --text-secondary: #94a3b8;

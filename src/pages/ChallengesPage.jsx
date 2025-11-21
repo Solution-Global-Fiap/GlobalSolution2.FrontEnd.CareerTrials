@@ -8,6 +8,7 @@ import { Rocket } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import QuizModal from "@/components/QuizModal.jsx";
 import UploadModal from "@/components/UploadModal.jsx";
+import { checkIsAlreadyCompleted } from "@/utils/completeChallenge.js";
 
 const STEPS = {
   CHAT: "chat",
@@ -17,7 +18,7 @@ const STEPS = {
 
 const analysisSteps = [
   { id: 1, label: "Entendendo seu objetivo de carreira", duration: 1500 },
-  { id: 2, label: "dentificando as habilidades necessárias", duration: 2000 },
+  { id: 2, label: "Identificando as habilidades necessárias", duration: 2000 },
   { id: 3, label: "Mapeando as dependências de habilidades", duration: 2000 },
   { id: 4, label: "Criando um roteiro personalizado", duration: 1500 },
   { id: 5, label: "Gerando recursos de aprendizagem", duration: 1000 },
@@ -170,12 +171,12 @@ export default function ChallengesPage() {
                   .filter((c) => c.level === level)
                   .map((challenge, index) => (
                     <div key={challenge.id} className="relative z-10">
-                      <TimelineNode />
-
+                      <TimelineNode isChecked={checkIsAlreadyCompleted(challenge)} />
                       <ChallengeCard
                         challenge={challenge}
                         align={index % 2 === 0 ? "right" : "left"}
                         onClick={() => setSelectedChallenge(challenge)}
+                        isChecked={checkIsAlreadyCompleted(challenge)}
                       />
                     </div>
                   ))}

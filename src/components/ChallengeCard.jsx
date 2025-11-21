@@ -1,7 +1,7 @@
 import { Card } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 
-export default function ChallengeCard({ challenge, align = "right", onClick }) {
+export default function ChallengeCard({ challenge, align = "right", onClick, isChecked}) {
   const typeColors = {
     Code: "#2ecc71",
     Quiz: "#6c5ce7",
@@ -23,7 +23,7 @@ export default function ChallengeCard({ challenge, align = "right", onClick }) {
     >
       <Card
         className="p-6 rounded-xl shadow-md w-[380px] cursor-pointer hover:scale-[1.02] transition"
-        style={{ background: "var(--bg)", borderColor: "var(--border)" }}
+        style={{ background: isChecked ? "var(--bg-card-completed)" :  "var(--bg)", borderColor: "var(--border)" }}
       >
         <div className="flex justify-between">
           <h3 className="font-semibold">{challenge.title}</h3>

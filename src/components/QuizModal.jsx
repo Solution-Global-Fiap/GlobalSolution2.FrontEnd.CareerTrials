@@ -1,4 +1,9 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
@@ -15,8 +20,10 @@ export default function QuizModal({ challenge, onClose }) {
   const questions = challenge.questions;
 
   const handleNext = () => {
+    let newScore = score;
     if (selected === questions[current].answer) {
-      setScore((s) => s + 1);
+      newScore = score + 1;
+      setScore(newScore);
     }
 
     setSelected(null);
@@ -24,7 +31,7 @@ export default function QuizModal({ challenge, onClose }) {
     if (current + 1 < questions.length) {
       setCurrent((c) => c + 1);
     } else {
-      const result = completeChallenge(challenge);
+      const result = completeChallenge(challenge, newScore, questions.length);
       setXpResult(result);
       setFinished(true);
     }
@@ -32,7 +39,7 @@ export default function QuizModal({ challenge, onClose }) {
 
   return (
     <Dialog open={true} onOpenChange={onClose}>
-      <DialogContent 
+      <DialogContent
         className="max-w-lg text-foreground border-border border"
         overlayClassName="dialog-overlay"
       >
@@ -47,19 +54,29 @@ export default function QuizModal({ challenge, onClose }) {
             <div className="text-center">
               <h2 className="text-2xl font-bold">Quiz Finalizado!</h2>
               <p className="text-muted-foreground mt-1">
-                Você acertou <strong>{score}</strong> de {questions.length} perguntas.
+                Você acertou <strong>{score}</strong> de {questions.length}{" "}
+                perguntas.
               </p>
             </div>
 
             {xpResult && (
               <div className="bg-secondary p-4 rounded-lg text-center w-full border border-border">
-                {xpResult.alreadyCompleted ? (
+                {!xpResult.gotMaxScore ? (
                   <>
-                    <p className="font-semibold text-yellow-500">
-                      Você já concluiu este desafio antes!
+                    <p className="font-semibold text-red-500">
+                      Você não alcançou a pontuação máxima.
                     </p>
                     <p className="opacity-80 text-sm">
-                      Nenhum XP foi ganho desta vez.
+                      Tente novamente para ganhar XP!
+                    </p>
+                  </>
+                ) : xpResult.alreadyCompleted ? (
+                  <>
+                    <p className="font-semibold text-yellow-500">
+                      Você já ganhou XP deste desafio anteriormente!
+                    </p>
+                    <p className="opacity-80 text-sm">
+                      Continue praticando para melhorar.
                     </p>
                   </>
                 ) : (
@@ -79,7 +96,7 @@ export default function QuizModal({ challenge, onClose }) {
               {Math.round((score / questions.length) * 100)}%
             </div>
 
-            <Button 
+            <Button
               onClick={onClose}
               className="w-full"
             >
@@ -100,8 +117,9 @@ export default function QuizModal({ challenge, onClose }) {
                   className={`
                     w-full text-left text-white font-semibold rounded-xl py-3
                   `}
-                  style={{ 
-                    background: selected === c ? "var(--primary)" : "var(--muted)",
+                  style={{
+                    background:
+                      selected === c ? "var(--primary)" : "var(--muted)",
                   }}
                 >
                   {c}
