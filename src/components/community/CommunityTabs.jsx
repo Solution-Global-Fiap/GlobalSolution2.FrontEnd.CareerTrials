@@ -1,14 +1,12 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PostFeed from "./PostFeed";
-import DiscussionsTab from "./DiscussionsTab";
 import MentorshipTab from "./MentorshipTab";
 
 export default function CommunityTabs({ posts, comments, mentors, likedPosts, toggleLike, onOpenCommentDialog }) {
     return (
         <Tabs defaultValue="feed" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-3 gap-1 bg-primary/10">
+            <TabsList className="grid w-full grid-cols-2 gap-1 bg-primary/10">
                 <TabsTrigger value="feed">Feed</TabsTrigger>
-                <TabsTrigger value="discussions">Discussões</TabsTrigger>
                 <TabsTrigger value="mentorship">Mentoria</TabsTrigger>
             </TabsList>
 
@@ -20,10 +18,6 @@ export default function CommunityTabs({ posts, comments, mentors, likedPosts, to
                     toggleLike={toggleLike} 
                     onOpenCommentDialog={onOpenCommentDialog} 
                 />
-            </TabsContent>
-
-            <TabsContent value="discussions" className="space-y-4">
-                <DiscussionsTab />
             </TabsContent>
 
             <TabsContent value="mentorship" className="space-y-4">
