@@ -39,7 +39,9 @@ export default function ChallengesPage() {
   const user = getUser();
 
   useEffect(() => {
-    getOrCreateSession(user.id).then(setSession)
+    if (getIsChatCompleted() !== "true") {
+      getOrCreateSession(user.id).then(setSession);
+    }
   }, [user.id]);
 
   const handleChatComplete = async () => {
