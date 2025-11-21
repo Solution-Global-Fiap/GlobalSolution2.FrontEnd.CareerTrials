@@ -7,8 +7,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getUser } from "../hooks/useAuth";
 import {
   Trophy,
-  Clock,
-  BarChart3,
+  ChevronsLeftRight,
+  SmilePlus,
   Mail,
   Linkedin,
   Github,
@@ -48,7 +48,7 @@ export default function ProfilePage() {
   const levelProgress = (currentLevelXP / XP_PER_LEVEL) * 100;
 
   return (
-    <div className="space-y-8 my-20">
+    <div className="space-y-8 my-20 ">
       <Card
         className="p-8 rounded-2xl shadow-md"
         style={{
@@ -120,11 +120,22 @@ export default function ProfilePage() {
           }}
         >
           <div className="flex items-center gap-3 mb-3">
-            <Clock className="h-5 w-5" style={{ color: "var(--primary)" }} />
-            <h3 className="font-semibold">Study Time</h3>
+            <Award className="h-5 w-5" style={{ color: "var(--primary)" }} />
+            <h3 className="font-semibold">Certificações</h3>
           </div>
-          <p className="text-3xl font-bold">24h</p>
-          <p style={{ color: "var(--subtle-text)" }}>This month</p>
+          <div className="flex flex-wrap gap-3">
+            {user.certificacoes.map((c) => (
+              <Badge
+                key={c}
+                style={{
+                  background: "var(--primary)",
+                  color: "var(--text-inverted)",
+                }}
+              >
+                {c}
+              </Badge>
+            ))}
+          </div>
         </Card>
 
         <Card
@@ -135,14 +146,25 @@ export default function ProfilePage() {
           }}
         >
           <div className="flex items-center gap-3 mb-3">
-            <BarChart3
+            <ChevronsLeftRight
               className="h-5 w-5"
               style={{ color: "var(--primary)" }}
             />
-            <h3 className="font-semibold">Streak</h3>
+            <h3 className="font-semibold">Hard Skills</h3>
           </div>
-          <p className="text-3xl font-bold">7 days</p>
-          <p style={{ color: "var(--subtle-text)" }}>Keep it up!</p>
+          <div className="flex flex-wrap gap-2">
+            {user.habilidadesTecnicas.map((skill) => (
+              <Badge
+                key={skill}
+                style={{
+                  background: "var(--primary)",
+                  color: "var(--text-inverted)",
+                }}
+              >
+                {skill}
+              </Badge>
+            ))}
+          </div>
         </Card>
 
         <Card
@@ -153,15 +175,30 @@ export default function ProfilePage() {
           }}
         >
           <div className="flex items-center gap-3 mb-3">
-            <Trophy className="h-5 w-5" style={{ color: "var(--primary)" }} />
-            <h3 className="font-semibold">Badges</h3>
+            <SmilePlus
+              className="h-5 w-5"
+              style={{ color: "var(--primary)" }}
+            />
+            <h3 className="font-semibold">Soft Skills</h3>
           </div>
-          <p className="text-3xl font-bold">12</p>
-          <p style={{ color: "var(--subtle-text)" }}>Earned</p>
+          <div className="flex flex-wrap gap-2">
+            {user.softSkills.map((skill) => (
+              <Badge
+                key={skill}
+                variant="outline"
+                style={{
+                  background: "var(--primary)",
+                  color: "var(--text-inverted)",
+                }}
+              >
+                {skill}
+              </Badge>
+            ))}
+          </div>
         </Card>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-full">
         <Card
           className="p-6 rounded-xl shadow-sm"
           style={{
@@ -212,86 +249,6 @@ export default function ProfilePage() {
                     {user.github || "Não informado"}
                   </a>
                 </p>
-              </div>
-            </div>
-          </div>
-        </Card>
-
-        <Card
-          className="p-6 rounded-xl shadow-sm"
-          style={{
-            background: "var(--bg-section)",
-            borderColor: "var(--border)",
-          }}
-        >
-          <div className="flex items-center gap-2 mb-4">
-            <BarChart3
-              className="h-5 w-5"
-              style={{ color: "var(--primary)" }}
-            />
-            <h2 className="text-xl font-semibold">Learning Activity</h2>
-          </div>
-
-          <div className="space-y-6">
-            {[
-              ["Mon", "2h 30m", 80],
-              ["Tue", "1h 45m", 60],
-              ["Wed", "3h 15m", 100],
-              ["Thu", "2h 00m", 70],
-              ["Fri", "1h 30m", 50],
-            ].map(([day, time, value]) => (
-              <div key={day}>
-                <div className="flex justify-between text-sm mb-1">
-                  <span style={{ color: "var(--subtle-text)" }}>{day}</span>
-                  <span>{time}</span>
-                </div>
-                <Progress value={value} className="h-2 bg-border" />
-              </div>
-            ))}
-          </div>
-        </Card>
-
-        <Card
-          className="p-6 rounded-xl shadow-md"
-          style={{
-            background: "var(--bg-section)",
-            borderColor: "var(--border)",
-          }}
-        >
-          <h2 className="text-xl font-semibold mb-4">Habilidades</h2>
-
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div>
-              <h3 className="font-semibold mb-2 text-lg">
-                Habilidades Técnicas
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {user.habilidadesTecnicas.map((skill) => (
-                  <Badge
-                    key={skill}
-                    style={{
-                      background: "var(--primary)",
-                      color: "var(--text-inverted)",
-                    }}
-                  >
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-2 text-lg">Soft Skills</h3>
-              <div className="flex flex-wrap gap-2">
-                {user.softSkills.map((skill) => (
-                  <Badge
-                    key={skill}
-                    variant="outline"
-                    style={{ borderColor: "var(--border)" }}
-                  >
-                    {skill}
-                  </Badge>
-                ))}
               </div>
             </div>
           </div>
@@ -390,33 +347,7 @@ export default function ProfilePage() {
         </Card>
 
         <Card
-          className="p-6 rounded-xl shadow-md"
-          style={{
-            background: "var(--bg-section)",
-            borderColor: "var(--border)",
-          }}
-        >
-          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <Award className="h-5 w-5" /> Certificações
-          </h2>
-
-          <div className="flex flex-wrap gap-3">
-            {user.certificacoes.map((c) => (
-              <Badge
-                key={c}
-                style={{
-                  background: "var(--primary)",
-                  color: "var(--text-inverted)",
-                }}
-              >
-                {c}
-              </Badge>
-            ))}
-          </div>
-        </Card>
-
-        <Card
-          className="p-6 rounded-xl shadow-md"
+          className="p-6 rounded-xl shadow-md lg:col-span-2"
           style={{
             background: "var(--bg-section)",
             borderColor: "var(--border)",

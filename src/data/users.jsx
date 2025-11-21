@@ -1,5 +1,5 @@
 const getUsers = [
-  {
+   {
     id: 1,
     nome: "Wesley Oliveira",
     email: "wesley.oliveira@example.com",
@@ -7,46 +7,93 @@ const getUsers = [
     github: "https://github.com/oliveiralimadiogo",
     senha: "SenhaWesley123",
     foto: "https://randomuser.me/api/portraits/men/24.jpg",
-    cargo: "Data Scientist",
-    resumo: "Profissional focado em Dados.",
+    cargo: "Full Stack Developer Jr",
+    resumo:
+      "Desenvolvedor Full Stack Júnior focado na criação de aplicações web modernas utilizando React, Node.js e bancos de dados SQL e NoSQL.",
     localizacao: "Fortaleza/CE",
-    area: "Dados",
+    area: "Desenvolvimento Full Stack",
     xp: 0,
     level: 0,
     completedChallenges: [],
-    habilidadesTecnicas: ["Pandas", "Machine Learning", "Python"],
-    softSkills: ["Organização", "Comunicação"],
+    habilidadesTecnicas: [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "PostgreSQL",
+      "HTML",
+      "CSS",
+      "Git",
+    ],
+    softSkills: ["Trabalho em equipe", "Proatividade"],
     experiencias: [
       {
-        empresa: "TechCorp",
-        cargo: "Data Scientist",
-        inicio: "2019-01",
-        fim: "2024-01",
-        descricao: "Atuação na área de Dados.",
+        empresa: "Tech Labs",
+        cargo: "Desenvolvedor Full Stack Júnior",
+        inicio: "2023-06",
+        fim: "o momento",
+        descricao:
+          "Atuação no desenvolvimento de funcionalidades de front-end com React e back-end com Node.js, manutenção de APIs REST e integração com banco de dados MongoDB.",
+      },
+      {
+        empresa: "WebCreators",
+        cargo: "Estagiário de Desenvolvimento Web",
+        inicio: "2022-01",
+        fim: "2023-05",
+        descricao:
+          "Suporte na criação de interfaces responsivas, correção de bugs e implementação de endpoints simples em aplicações Node.js.",
       },
     ],
     formacao: [
       {
-        curso: "Tecnologia da Informação",
-        instituicao: "Universidade XYZ",
-        ano: 2018,
+        curso: "Engenharia de Software",
+        instituicao: "FIAP",
+        ano: 2023,
+      },
+      {
+        curso: "Ensino Médio técnico",
+        instituicao: "Instituto J&F",
+        ano: 2016,
       },
     ],
     projetos: [
       {
-        titulo: "Projeto Data",
+        titulo: "Plataforma de Tarefas Full Stack",
         link: "",
-        descricao: "Projeto relevante na área de Dados.",
+        descricao:
+          "Aplicação completa com React e Node.js para gerenciamento de tarefas, incluindo autenticação JWT e banco MongoDB.",
+      },
+      {
+        titulo: "Clone do Spotify com React",
+        link: "",
+        descricao:
+          "Interface funcional inspirada no Spotify, com player de música e integração com API pública.",
+      },
+      {
+        titulo: "API REST de E-commerce",
+        link: "",
+        descricao:
+          "API Node.js e Express com CRUD de produtos, categorias e carrinho, integrada ao PostgreSQL.",
       },
     ],
-    certificacoes: ["Certificação XPTO"],
+    certificacoes: [
+      "Certificação JavaScript Essentials",
+      "Microsoft Azure Fundamentals",
+      "AWS Cloud Practitioner",
+      "English Level C",
+    ],
     idiomas: [
       {
         idioma: "Inglês",
-        nivel: "Intermediário",
+        nivel: "Avançado",
+      },
+      {
+        idioma: "Português",
+        nivel: "Fluente",
       },
     ],
-    areaInteresses: ["Inovação", "Dados"],
+    areaInteresses: ["Desenvolvimento Web", "Arquitetura de Software"],
   },
   {
     id: 2,

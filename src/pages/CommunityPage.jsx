@@ -106,7 +106,7 @@ export default function CommunityPage() {
     const mentors = users.filter(user => user.level >= 50)
 
     return (
-        <div className="py-10 space-y-8">
+        <div className="max-w-6xl mx-auto px-4 py-10 pt-20 space-y-8">
             <div className="space-y-4">
                 <div className="flex items-start justify-between">
                     <div>
