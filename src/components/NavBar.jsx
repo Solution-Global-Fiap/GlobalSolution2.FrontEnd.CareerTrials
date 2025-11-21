@@ -3,12 +3,10 @@ import { Users, Target, UserCog, Menu, X } from "lucide-react";
 import { Routes } from "../routes/routes";
 import ModeToggle from "./ModeToggle";
 import { getUser } from "@/hooks/useAuth";
-import { useTheme } from "./ThemeProvider";
 import { useState } from "react";
 import CareerTrialsLogo from "./CareerTrialsLogo";
 
 export default function Navbar() {
-  const { theme } = useTheme();
   const [open, setOpen] = useState(false);
 
   const menuItems = [
