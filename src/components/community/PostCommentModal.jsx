@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import getUsers from "@/data/users";
@@ -17,12 +17,13 @@ function formatTimestamp(timestamp) {
     return `${days} dias atrás`;
 }
 
-export default function PostCommentsModal({ user, post, open, onClose }) {
+export default function PostCommentsModal({ user, post, comments, open, onClose }) {
     return (
         <Dialog open={open} onOpenChange={onClose}>
             <DialogContent className="max-w-2xl bg-background border border-border p-6 pt-15 rounded-xl overflow-y-auto max-h-[90vh]">
 
                 <DialogHeader>
+                    <DialogTitle/>
                     <div className="flex items-center gap-3">
                         <Avatar>
                             <AvatarImage src={user.foto} alt={user.nome} />
@@ -55,11 +56,11 @@ export default function PostCommentsModal({ user, post, open, onClose }) {
                 <h4 className="font-semibold text-lg mb-3">Comentários</h4>
 
                 <div className="space-y-4">
-                    {post.comments.length === 0 && (
+                    {comments.length === 0 && (
                         <p className="text-sm text-muted-foreground">Nenhum comentário ainda.</p>
                     )}
 
-                    {post.comments.map(comment => {
+                    {comments.map(comment => {
                         const user = getUsers.find(u => u.id === comment.authorId);
 
                         return (

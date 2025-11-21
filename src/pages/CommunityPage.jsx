@@ -10,6 +10,7 @@ import getUsers from "@/data/users";
 import { getUser } from "@/hooks/useAuth";
 import getPosts from "../data/posts"
 import NewPostDialog from "@/components/community/NewPostDialog";
+import NewCommentDialog from "@/components/community/NewCommentDialog";
 
 export default function CommunityPage() {
     const [users] = useState(getUsers);
@@ -19,13 +20,22 @@ export default function CommunityPage() {
     });
     const [comments, setComments] = useState(() => {
         const saved = localStorage.getItem("community_comments");
-        return saved ? JSON.parse(saved) : getPosts.flatMap((post) => post.comments);
+        return saved
+            ? JSON.parse(saved)
+            : getPosts
+                .reduce((acc, post) => {
+                    acc[post.id] = post.comments || [];
+                    return acc;
+                }, {});
+        ;
     });
     const [likedPosts, setLikedPosts] = useState(() => {
         const saved = localStorage.getItem("community_likes");
         return saved ? new Set(JSON.parse(saved)) : new Set();
     });
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [isDialogPostOpen, setIsDialogPostOpen] = useState(false);
+    const [isDialogCommentOpen, setIsDialogCommentOpen] = useState(false);
+    const [selectedPostId, setSelectedPostId] = useState(null);
 
     const currentUser = getUser();
     const currentUserId = currentUser.id;
@@ -41,6 +51,11 @@ export default function CommunityPage() {
     useEffect(() => {
         localStorage.setItem("community_likes", JSON.stringify([...likedPosts]));
     }, [likedPosts]);
+
+    const handleOpenCommentDialog = (postId) => {
+        setSelectedPostId(postId);
+        setIsDialogCommentOpen(true);
+    };
 
     const toggleLike = (postId) => {
         setLikedPosts((prev) => {
@@ -66,10 +81,14 @@ export default function CommunityPage() {
         };
 
         setPosts((prev) => [newPost, ...prev]);
-        setIsDialogOpen(false);
+        setComments(prev => ({
+            ...prev,
+            [newPost.id]: []
+        }));
+        setIsDialogPostOpen(false);
     };
 
-    const handleAddComment = (postId, content) => {
+    const handleAddComment = (content, postId) => {
         const newComment = {
             id: crypto.randomUUID(),
             authorId: currentUserId,
@@ -81,9 +100,8 @@ export default function CommunityPage() {
             ...prev,
             [postId]: [...(prev[postId] || []), newComment],
         }));
+        setIsDialogCommentOpen(false);
     };
-
-    const getCommentsForPost = (postId) => comments[postId] || [];
 
     const mentors = users.filter(user => user.level >= 50)
 
@@ -97,7 +115,7 @@ export default function CommunityPage() {
                             Conecte-se com outros aprendizes, compartilhe progresso e cresça junto
                         </p>
                     </div>
-                    <Button onClick={() => setIsDialogOpen(true)}>
+                    <Button onClick={() => setIsDialogPostOpen(true)}>
                         <MessageSquare className="h-4 w-4 mr-2" />
                         Nova Publicação
                     </Button>
@@ -113,9 +131,11 @@ export default function CommunityPage() {
             <div className="grid lg:grid-cols-[1fr_340px] gap-8">
                 <CommunityTabs
                     posts={posts}
+                    comments={comments}
                     mentors={mentors}
-                    likedPosts={likedPosts} 
-                    toggleLike={toggleLike} 
+                    likedPosts={likedPosts}
+                    toggleLike={toggleLike}
+                    onOpenCommentDialog={handleOpenCommentDialog}
                 />
 
                 <div className="space-y-6">
@@ -125,9 +145,15 @@ export default function CommunityPage() {
                 </div>
             </div>
             <NewPostDialog
-                open={isDialogOpen}
-                onOpenChange={setIsDialogOpen}
+                open={isDialogPostOpen}
+                onOpenChange={setIsDialogPostOpen}
                 onSubmit={handleCreatePost}
+            />
+            <NewCommentDialog
+                open={isDialogCommentOpen}
+                onOpenChange={setIsDialogCommentOpen}
+                onSubmit={handleAddComment}
+                postId={selectedPostId}
             />
         </div>
     );

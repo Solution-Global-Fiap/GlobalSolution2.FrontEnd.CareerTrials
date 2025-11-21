@@ -21,13 +21,13 @@ function formatTimestamp(timestamp) {
     return `${days} dias atrás`;
 }
 
-export default function PostCard({ post, isLiked, onToggleLike }) {
+export default function PostCard({ post, comments, isLiked, onToggleLike, onOpenComments }) {
     const user = getUsers.filter((user) => user.id === post.authorId)[0];
     const [showComments, setShowComments] = useState(false);
 
     return (
         <>
-            <Card className="p-6 space-y-4">
+            <Card onClick={() => setShowComments(true)} className="p-6 space-y-4 cursor-pointer">
                 <div className="flex items-start gap-3">
                     <Avatar className="h-12 w-12">
                         <AvatarImage src={user.foto} alt={user.nome} />
@@ -68,17 +68,21 @@ export default function PostCard({ post, isLiked, onToggleLike }) {
                         <span>{post.likes + (isLiked ? 1 : 0)}</span>
                     </Button>
                     <Button
-                        onClick={() => setShowComments(true)}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onOpenComments(post.id);
+                        }}
                         className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                         <MessageCircle className="h-4 w-4" />
-                        <span>{post.comments.length}</span>
+                        <span>{comments.length}</span>
                     </Button>
                 </div>
             </Card>
 
             <PostCommentsModal
                 post={post}
+                comments={comments}
                 user={user}
                 open={showComments}
                 onClose={() => setShowComments(false)}

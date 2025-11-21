@@ -2,7 +2,7 @@ import { MessageSquare } from "lucide-react";
 import { Card } from "../ui/card";
 import PostCard from "./PostCard";
 
-export default function PostFeed({ posts, likedPosts, toggleLike }) {
+export default function PostFeed({ posts, likedPosts, toggleLike, onOpenCommentDialog, comments }) {
     if (posts.length === 0) {
         return (
             <Card className="p-8 text-center space-y-4 flex flex-col justify-center items-center">
@@ -25,8 +25,10 @@ export default function PostFeed({ posts, likedPosts, toggleLike }) {
                 <PostCard
                     key={post.id}
                     post={post}
+                    comments={comments[post.id]}
                     isLiked={likedPosts.has(post.id)}
                     onToggleLike={() => toggleLike(post.id)}
+                    onOpenComments={() => onOpenCommentDialog(post.id)}
                 />
             ))}
         </>
